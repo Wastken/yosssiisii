@@ -17,6 +17,24 @@ const ROL_SECIM_KANAL_ID = '1566184536147239015';
 const BARBIES_ROL_ID = '1566184130067038388';
 const GARIBAN_ROL_ID = '1566184159708319804';
 const OWO_KANAL_ID = '1566189354442031154';
+const SES_KANAL_ID = '1566181709202853978';
+
+// Ses Kanalına Bağlanma Kısmı
+    try {
+        const guild = client.guilds.cache.first(); // Veya belirli bir sunucu ID'si
+        if (guild) {
+            joinVoiceChannel({
+                channelId: SES_KANAL_ID,
+                guildId: guild.id,
+                adapterCreator: guild.voiceAdapterCreator,
+                selfDeaf: true, // Kulaklığı sağırlaştırılmış şekilde girer
+                selfMute: true  // Susturulmuş şekilde girer
+            });
+            console.log('Bot başarıyla ses kanalına giriş yaptı ve uykusuz mod açıldı!');
+        }
+    } catch (error) {
+        console.error('Ses kanalına girerken hata oluştu:', error);
+    }
 
 client.once('clientReady', async () => {
     console.log(`Bot aktif: ${client.user.tag}`);
